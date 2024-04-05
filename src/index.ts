@@ -10,7 +10,7 @@ export class P2PKassaSDK {
 		this.apiKey = apiKey;
 	}
 
-	public async createLink(
+	public async createInvoice(
 		orderId: number,
 		amount: number,
 		currency: string,
