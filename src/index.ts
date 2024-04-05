@@ -44,9 +44,10 @@ export class P2PKassaSDK {
 		amount: number,
 		currency: string,
 	): Promise<Invoice> {
+		const fakeOrderId = Date.now() + Math.floor(Math.random() * 99999);
 		const data = {
 			project_id: this.projectId,
-			order_id: Date.now() + Math.floor(Math.random() * 99999),
+			order_id: fakeOrderId,
 			amount: amount,
 			currency: currency,
 			data: JSON.stringify({
@@ -54,7 +55,7 @@ export class P2PKassaSDK {
 			})
 		};
 
-		const joinString = `${this.apiKey}${orderId}${
+		const joinString = `${this.apiKey}${fakeOrderId}${
 			this.projectId
 		}${amount.toFixed(2)}${currency}`;
 		const authToken = createHash("sha512").update(joinString).digest("hex");

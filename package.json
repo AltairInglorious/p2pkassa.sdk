@@ -1,6 +1,6 @@
 {
   "name": "at.p2pkassa.sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "SDK for P2PKassa",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
