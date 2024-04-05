@@ -1,0 +1,37 @@
+{
+  "name": "at.p2pkassa.sdk",
+  "version": "1.0.0",
+  "description": "SDK for P2PKassa",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "biome:format": "npx @biomejs/biome format ./src --write",
+    "biome:lint": "npx @biomejs/biome lint ./src",
+    "biome:check": "npx @biomejs/biome check --apply ./src",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AltairInglorious/p2pkassa.sdk.git"
+  },
+  "keywords": [
+    "sdk",
+    "typescript",
+    "payments"
+  ],
+  "author": "Adam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AltairInglorious/p2pkassa.sdk/issues"
+  },
+  "homepage": "https://github.com/AltairInglorious/p2pkassa.sdk#readme",
+  "devDependencies": {
+    "@biomejs/biome": "1.6.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  }
+}
