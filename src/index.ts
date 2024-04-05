@@ -1,5 +1,5 @@
-import { createHash } from "node:crypto";
-import type { Invoice } from "./types/Invoice";
+import {createHash} from "node:crypto";
+import type {Invoice} from "./types/Invoice";
 
 export class P2PKassaSDK {
 	private readonly projectId: number;
@@ -20,6 +20,38 @@ export class P2PKassaSDK {
 			order_id: orderId,
 			amount: amount,
 			currency: currency,
+		};
+
+		const joinString = `${this.apiKey}${orderId}${
+			this.projectId
+		}${amount.toFixed(2)}${currency}`;
+		const authToken = createHash("sha512").update(joinString).digest("hex");
+
+		const res = await fetch("https://p2pkassa.online/api/v2/link", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${authToken}`,
+			},
+			body: JSON.stringify(data),
+		});
+
+		return res.json();
+	}
+
+	public async createInvoiceUuid(
+		orderId: string,
+		amount: number,
+		currency: string,
+	): Promise<Invoice> {
+		const data = {
+			project_id: this.projectId,
+			order_id: Date.now() + Math.floor(Math.random() * 99999),
+			amount: amount,
+			currency: currency,
+			data: JSON.stringify({
+				uuid: orderId,
+			})
 		};
 
 		const joinString = `${this.apiKey}${orderId}${
