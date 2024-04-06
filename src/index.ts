@@ -1,6 +1,5 @@
 import {createHash} from "node:crypto";
 import type {Invoice} from "./types/Invoice";
-import {WebhookData} from "./types/WebhookData";
 
 export class P2PKassaSDK {
 	private readonly projectId: number;
@@ -74,7 +73,7 @@ export class P2PKassaSDK {
 	}
 
 	public parseUuidFromWebhookData(data: any): string | unknown {
-		return (data as WebhookData).data.uuid;
+		return data.data.uuid;
 	}
 
 	public checkWebhook(data: any): boolean {
