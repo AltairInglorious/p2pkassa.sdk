@@ -82,7 +82,7 @@ export class P2PKassaSDK {
 			!data?.id ||
 			!data?.order_id ||
 			!data?.amount ||
-			Number.isNaN(data.amount) ||
+			Number.isNaN(Number(data.amount)) ||
 			!data?.currency
 		) {
 			return false;
