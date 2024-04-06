@@ -82,15 +82,21 @@ export class P2PKassaSDK {
 			!data?.id ||
 			!data?.order_id ||
 			!data?.amount ||
-			Number.isNaN(Number(data.amount)) ||
+			Number.isNaN(Number(data?.amount)) ||
 			!data?.currency
 		) {
+			console.error(`P2PKassa error: not valid webhook data:
+sign: ${data?.sign} (${typeof data?.sign})
+id: ${data?.id} (${typeof data?.id})
+order_id: ${data?.order_id} (${typeof data?.order_id})
+amount: ${data?.amount} (${typeof data?.amount})
+currency: ${data?.currency} (${typeof data?.currency})`);
 			return false;
 		}
 
 		const joinString = `${this.apiKey}${data.id}${data.order_id}${
 			this.projectId
-		}${data.amount.toFixed(2)}${data.currency}`;
+		}${Number(data.amount).toFixed(2)}${data.currency}`;
 		const checkSign = createHash("sha256").update(joinString).digest("hex");
 
 		return checkSign === data.sign;
