@@ -72,7 +72,7 @@ export class P2PKassaSDK {
 		return res.json();
 	}
 
-	public parseUuidFromWebhookData(data: any): string | unknown {
+	public static parseUuidFromWebhookData(data: any): string | unknown {
 		return data.data.uuid;
 	}
 
