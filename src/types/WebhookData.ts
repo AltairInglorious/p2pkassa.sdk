@@ -1,12 +1,12 @@
 export type WebhookData = {
-	id: unknown; // ID платежа в нашей системе
-	order_id: unknown; // ID платежа в вашей системе
-	project_id: unknown; // ID вашего проекта
-	amount: unknown; // Сумма платежа (начальная)
+	id: string; // ID платежа в нашей системе
+	order_id: string; // ID платежа в вашей системе
+	project_id: string; // ID вашего проекта
+	amount: string; // Сумма платежа (начальная) "100.00"
 	currency: string; // Валюта платежа (начальная)
-	amount_pay: unknown; // Сумма, которую оплатили
+	amount_pay: string; // Сумма, которую оплатили "104.00"
 	currency_pay: string; // Валюта в которой оплатили
-	paid_less: unknown; // Проверка на точную сумму. Возвращает 1 если сумма оплаты меньше, чем нужно.
-	createDateTime: string; // Дата платежа в формате 2024-01-01 00:00:00
-	data: unknown; // Возвращает json массив ваших данных, если они были созданы при платеже в виде {"name_1":"value_1","name_2":"value_2"}
+	paid_less: 1 | null; // Проверка на точную сумму. Возвращает 1 если сумма оплаты меньше, чем нужно.
+	createDateTime: string; // Дата платежа в формате "2024-01-01 00:00:00"
+	data: unknown; // Возвращает json ваших данных в виде {"name_1":"value_1","name_2":"value_2"}
 };
